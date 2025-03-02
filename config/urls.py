@@ -18,12 +18,11 @@ from tkinter.font import names
 
 from django.contrib import admin
 from django.urls import path, include
-from store.views import catalog_list, catalog_detail
+from store.views import category_list
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/category/',catalog_list, name='category-list'),
-    path('api/category/',  catalog_detail,name='category-detail'),
+    path('api/category/',category_list),
     path('api/products/', include('store.urls')),
     path('api/orders/', include('orders.urls')),
 ]

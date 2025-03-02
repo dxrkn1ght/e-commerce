@@ -44,7 +44,7 @@ def product_detail(request, pk):
 
 
 @api_view(['GET', 'POST'])
-def catalog_list(request):
+def category_list(request):
     if request.method == 'GET':
         catalogs = Category.objects.all()
         serializer = CategorySerializer(catalogs, many=True)
@@ -60,7 +60,7 @@ def catalog_list(request):
 
 
 @api_view(['GET', 'PUT', 'DELETE'])
-def catalog_detail(request, pk):
+def category_detail(request, pk):
     try:
         catalog = Category.objects.get(pk=pk)
     except Category.DoesNotExist:

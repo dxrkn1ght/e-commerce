@@ -14,11 +14,16 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from tkinter.font import names
+
 from django.contrib import admin
 from django.urls import path, include
+from store.views import catalog_list, catalog_detail
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/store/', include('store.urls')),
+    path('api/category/',catalog_list, name='category-list'),
+    path('api/category/',  catalog_detail,name='category-detail'),
+    path('api/products/', include('store.urls')),
     path('api/orders/', include('orders.urls')),
 ]

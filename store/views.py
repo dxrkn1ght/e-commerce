@@ -8,9 +8,9 @@ from .serializers import ProductSerializer, CategorySerializer
 @api_view(['GET', 'POST'])
 def product_list(request):
     if request.method == 'GET':
-        product = Product.objects.all()
-        serializers = ProductSerializer
-        return Response(serializers.data)
+        products = Product.objects.all()
+        serializer = ProductSerializer(products, many=True)
+        return Response(serializer.data)
 
     elif request.method == 'POST':
         serializer = ProductSerializer(data=request.data)
